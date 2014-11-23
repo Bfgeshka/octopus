@@ -1,0 +1,8 @@
+--- opendchub-0.8.2/src/main.h.orig
++++ opendchub-0.8.2/src/main.h
+@@ -27,4 +27,4 @@
+#define BYTE char
+
+-#define ALARM_TIME         900             /* Seconds between alarm calls */ 
++#define ALARM_TIME         60             /* Seconds between alarm calls */ 
+#define MAX_NICK_LEN       50              /* Maximum length of nickname, 20 is max in win client */
