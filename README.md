@@ -1,6 +1,6 @@
 octopus
 =======
-My gentoo overlay.
+My gentoo overlay for more up-to-date ebuilds than can be founded in portage and for some packages which still not in it.
 
 Installation:
 =======
