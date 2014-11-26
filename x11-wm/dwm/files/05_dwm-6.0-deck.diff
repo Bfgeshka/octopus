@@ -1,5 +1,5 @@
---- dwm.c.orig	2013-03-26 23:50:10.044576455 +0100
-+++ dwm.c	2013-03-26 23:50:27.494576161 +0100
+--- a/dwm.c	2013-03-26 23:50:10.044576455 +0100
++++ b/dwm.c	2013-03-26 23:50:27.494576161 +0100
 @@ -171,6 +171,7 @@
  static void configurenotify(XEvent *e);
  static void configurerequest(XEvent *e);
