@@ -1,0 +1,83 @@
+--- dwm.c.orig	2013-07-01 18:05:08.132864736 -0400
++++ dwm.c	2013-07-01 20:29:24.109371300 -0400
+@@ -30,6 +30,7 @@
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
++#include <time.h>
+ #include <X11/cursorfont.h>
+ #include <X11/keysym.h>
+ #include <X11/Xatom.h>
+@@ -84,7 +85,7 @@ enum { NetSupported, NetSystemTray, NetS
+        NetWMWindowTypeDialog, NetLast };     /* EWMH atoms */
+ enum { Manager, Xembed, XembedInfo, XLast }; /* Xembed atoms */
+ enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
+-enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
++enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkClock,
+        ClkClientWin, ClkRootWin, ClkLast };             /* clicks */
+ 
+ typedef union {
+@@ -519,7 +520,7 @@ buttonpress(XEvent *e) {
+ 		else if(ev->x > selmon->ww - TEXTW(stext))
+ 			click = ClkStatusText;
+ 		else
+-			click = ClkWinTitle;
++			click = ClkClock;
+ 	}
+ 	else if((c = wintoclient(ev->window))) {
+ 		focus(c);
+@@ -846,7 +847,9 @@ dirtomon(int dir) {
+ 
+ void
+ drawbar(Monitor *m) {
+-	int x;
++	int x, clockw;
++	time_t current;
++	char clock[38];
+ 	unsigned int i, occ = 0, urg = 0;
+ 	XftColor *col;
+ 	Client *c;
+@@ -883,14 +886,14 @@ drawbar(Monitor *m) {
+ 	else
+ 		dc.x = m->ww;
+ 	if((dc.w = dc.x - x) > bh) {
++		time(&current);
++		strftime(clock, 38, clock_fmt, localtime(&current));
++		clockw = TEXTW(clock);
+ 		dc.x = x;
+-		if(m->sel) {
+-			col = dc.colors[m == selmon ? 1 : 0];
+-			drawtext(m->sel->name, col, True);
+-			drawsquare(m->sel->isfixed, m->sel->isfloating, col);
+-		}
+-		else
+-			drawtext(NULL, dc.colors[0], False);
++		drawtext(NULL, dc.colors[0], False);
++		dc.w = MIN(dc.w, clockw);
++		dc.x = MAX(dc.x, (m->mw / 2) - (clockw / 2));
++		drawtext(clock, dc.colors[1], False);
+ 	}
+ 	XCopyArea(dpy, dc.drawable, m->barwin, dc.gc, 0, 0, m->ww, bh, 0, 0);
+ 	XSync(dpy, False);
+@@ -1499,11 +1502,8 @@ propertynotify(XEvent *e) {
+ 			drawbars();
+ 			break;
+ 		}
+-		if(ev->atom == XA_WM_NAME || ev->atom == netatom[NetWMName]) {
++		if(ev->atom == XA_WM_NAME || ev->atom == netatom[NetWMName])
+ 			updatetitle(c);
+-			if(c == c->mon->sel)
+-				drawbar(c->mon);
+-		}
+ 		if(ev->atom == netatom[NetWMWindowType])
+ 			updatewindowtype(c);
+ 	}
+@@ -2581,6 +2581,8 @@ main(int argc, char *argv[]) {
+ 		die("usage: dwm [-v]\n");
+ 	if(!setlocale(LC_CTYPE, "") || !XSupportsLocale())
+ 		fputs("warning: no locale support\n", stderr);
++	else
++		setlocale(LC_ALL, "");
+ 	if(!(dpy = XOpenDisplay(NULL)))
+ 		die("dwm: cannot open display\n");
+ 	checkotherwm();
