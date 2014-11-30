@@ -37,6 +37,10 @@ src_prepare() {
 		-e 's|@${CC}|$(CC)|g' \
 		Makefile || die
 
+ 	for i in ${FILESDIR}/*.patch;do
+    	epatch "$i"    
+ 	done 
+
  	for i in ${FILESDIR}/*.diff;do
     	epatch "$i"    
  	done 
