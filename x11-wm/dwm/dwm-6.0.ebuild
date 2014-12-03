@@ -37,10 +37,6 @@ src_prepare() {
 		-e 's|@${CC}|$(CC)|g' \
 		Makefile || die
 
- 	for i in ${FILESDIR}/*.diff;do
-    	epatch "$i"    
- 	done 
-
 	restore_config config.h
 	epatch_user
 }
