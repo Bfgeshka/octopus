@@ -10,7 +10,7 @@ SRC_URI="http://github.com/nonstop/${PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND=">=dev-util/cmake-2.6.4-r3"
