@@ -19,6 +19,7 @@ IUSE="-qt4 gtk2"
 REQUIRED_USE=" ^^ ( qt4 gtk2 )"
 
 RDEPEND=">=dev-lang/lazarus-1.2.0
+		 >=dev-lang/fpc-2.6.2
          sys-apps/dbus
          dev-libs/glib
          sys-libs/ncurses
