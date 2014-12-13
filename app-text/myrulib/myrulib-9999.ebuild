@@ -16,7 +16,7 @@ KEYWORDS=""
 IUSE="+icu +links reader syslog"
 
 RDEPEND="
-	x11-libs/wxGTK:${WX_GTK_VER}[X]
+	x11-libs/wxGTK
 	dev-libs/libxml2
 	dev-db/sqlite:3[fts3(+),icu?]
 	dev-db/wxsqlite3
