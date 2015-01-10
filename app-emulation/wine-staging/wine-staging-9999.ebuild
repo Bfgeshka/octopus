@@ -306,7 +306,7 @@ src_unpack() {
 #	fi
 	unpack "${WINE_GENTOO}.tar.bz2"
 
-	l10n_find_plocales_changes "${S}/po" "" ".po"
+#	l10n_find_plocales_changes "${S}/po" "" ".po"
 }
 
 src_prepare() {
