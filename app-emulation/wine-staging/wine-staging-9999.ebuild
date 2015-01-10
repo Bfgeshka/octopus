@@ -338,12 +338,12 @@ src_prepare() {
 #			"../${COMPHOLIO_PATCHES}/patches/patch-list.patch"
 #		)
 		# epatch doesn't support binary patches
-		ebegin "Applying Compholio font patches"
-		for f in "${T}/10-Missing_Fonts"/*.patch; do
-			"../${COMPHOLIO_PATCHES}/debian/tools/gitapply.sh" < "${f}" || die "Failed to apply Compholio font patches"
-		done
-		eend
-	fi
+#		ebegin "Applying Compholio font patches"
+#		for f in "${T}/10-Missing_Fonts"/*.patch; do
+#			"../${COMPHOLIO_PATCHES}/debian/tools/gitapply.sh" < "${f}" || die "Failed to apply Compholio font patches"
+#		done
+#		eend
+#	fi
 	autotools-utils_src_prepare
 
 	if [[ "$(md5sum server/protocol.def)" != "${md5}" ]]; then
