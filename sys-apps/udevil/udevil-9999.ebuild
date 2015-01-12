@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND="
 	>=app-shells/bash-4.0
-	>=sys-fs/udev-143
+	>=virtual/udev-143
 	sys-libs/glibc
 	virtual/acl"
 DEPEND="${RDEPEND}
