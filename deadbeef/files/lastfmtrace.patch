@@ -1,0 +1,9 @@
+--- orig/lastfm.c	2012-10-18 13:58:43.000000000 +0400
++++ fixed/lastfm.c	2012-10-18 13:58:08.000000000 +0400
+@@ -25,4 +25,4 @@
+	#include "../../deadbeef.h"
+
+-	//#define trace(...) { fprintf(stderr, __VA_ARGS__); }
+-	#define trace(fmt,...)
++	#define trace(...) { fprintf(stderr, __VA_ARGS__); }
++	//#define trace(fmt,...)
