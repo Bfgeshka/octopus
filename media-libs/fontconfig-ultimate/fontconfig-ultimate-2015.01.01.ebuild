@@ -6,10 +6,11 @@ EAPI=5
 
 inherit readme.gentoo versionator
 
-MY_PV=$(replace_version_separator 3 "-")
+# MY_PV=$(replace_version_separator 1 2 "-")
+MY_PV=2015-01-01
 DESCRIPTION="A set of rendering and font replacement rules for fontconfig-infinality"
 HOMEPAGE="http://bohoomil.com/"
-SRC_URI="https://github.com/bohoomil/fontconfig-ultimate/archive/fontconfig_${MY_PV}.tar.gz"
+SRC_URI="https://github.com/bohoomil/fontconfig-ultimate/archive/${MY_PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
