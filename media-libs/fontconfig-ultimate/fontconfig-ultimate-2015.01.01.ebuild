@@ -131,8 +131,8 @@ src_install() {
 	done
 	cd "${S}"
 
-	insinto /etc/fonts/conf.avail
-	doins fontconfig_patches/ftypes/*.conf
+	# insinto /etc/fonts/conf.avail
+	# doins fontconfig_patches/ftypes/*.conf
 
 	insinto /usr/share/eselect-lcdfilter/env.d
 	doins "${T}"/ultimate
