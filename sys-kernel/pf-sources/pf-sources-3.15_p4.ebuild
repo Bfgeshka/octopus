@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/pf-sources/pf-sources-3.16_p1.ebuild,v 1.1 2014/08/27 17:33:54 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/pf-sources/pf-sources-3.16_p4.ebuild,v 1.1 2014/11/02 18:57:00 hwoarang Exp $
 
 EAPI="5"
 inherit readme.gentoo versionator
@@ -21,7 +21,7 @@ HOMEPAGE="http://pf.natalenko.name/"
 
 PF_VERS="1"
 PF_FILE="patch-${PV/_p*/}-pf${PV/*_p/}${COMPRESSTYPE}"
-PF_URI="https://dl.dropboxusercontent.com/u/54969696/longtime/patch-3.18-pf0.xz"
+PF_URI="http://pf.natalenko.name/sources/$(get_version_component_range 1-2)/${PF_FILE}"
 SRC_URI="${KERNEL_URI} ${PF_URI}" # \${EXPERIMENTAL_URI}
 
 KEYWORDS="-* ~amd64 ~ppc ~ppc64 ~x86"
