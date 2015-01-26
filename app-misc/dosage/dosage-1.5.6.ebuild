@@ -10,7 +10,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RDEPEND=">=virtual/python-2.3"
+# RDEPEND=">=virtual/python-2.3"
 
 src_unpack() {
 	unpack ${A}
