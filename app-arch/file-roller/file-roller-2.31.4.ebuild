@@ -20,7 +20,6 @@ RDEPEND=">=dev-libs/glib-2.25.5
 	>=gnome-base/gconf-2.6
 	nautilus? ( >=gnome-base/nautilus-2.22.2 )"
 DEPEND="${RDEPEND}
-	gnome-base/gnome-common:2
 	sys-devel/gettext
 	>=dev-util/intltool-0.35
 	dev-util/pkgconfig
