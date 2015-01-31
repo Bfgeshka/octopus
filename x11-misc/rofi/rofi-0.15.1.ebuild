@@ -32,8 +32,7 @@ DEPEND="
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}-0.14.9-optional-i3.patch \
-		"${FILESDIR}"/${PN}-0.14.12-run_test_sh.patch
+		"${FILESDIR}"/${PN}-0.14.9-optional-i3.patch
 	eautoreconf
 }
 
