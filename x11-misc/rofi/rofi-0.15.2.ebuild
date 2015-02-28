@@ -31,8 +31,8 @@ DEPEND="
 "
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-0.14.9-optional-i3.patch
+#	epatch \
+#		"${FILESDIR}"/${PN}-0.14.9-optional-i3.patch
 	eautoreconf
 }
 
