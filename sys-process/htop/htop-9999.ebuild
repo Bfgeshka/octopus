@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
-inherit subversion
+inherit git-r3
 
 DESCRIPTION="interactive process viewer"
 HOMEPAGE="http://htop.sourceforge.net"
@@ -37,6 +37,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	./autogen.sh
 	sed -i -e '1c\#!'"${EPREFIX}"'/usr/bin/python' \
 		scripts/MakeHeader.py || die
 }
