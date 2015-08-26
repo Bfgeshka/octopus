@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>octopus</name>
+    <description lang="en">Own and claimed ebuilds</description>
+    <homepage>https://github.com/Bfgeshka/octopus</homepage>
+    <owner type="person">
+      <email>bfg@derpy.ru</email>
+      <name>Bfgeshka</name>
+    </owner>
+    <source type="git">git://github.com/Bfgeshka/octopus.git</source>
+    <feed>https://github.com/Bfgeshka/octopus/commits/master.atom</feed>
+  </repo>
+</repositories>

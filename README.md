@@ -15,11 +15,13 @@ names_cache = ${location}/.cache/names
 write_cache = /var/cache/paludis/metadata
 ```
 
+# Portage
+Manual installation via layman
 
 own changes here:
 =======
 ```
-tcsh ebuild is fixed for 6.19.00
+tcsh ebuild is fixed and updated for latest release
 trying to keep pf-sources fresh
 actual git version for htop
 custom patchset for dwm-9999
