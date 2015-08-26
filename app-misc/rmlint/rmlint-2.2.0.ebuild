@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -12,7 +12,6 @@ SRC_URI="https://github.com/sahib/${PN}/archive/v${PV}.tar.gz"
 
 LICENSE=""
 SLOT="0"
-# That's where the author says it works on:
 KEYWORDS="~amd64 ~amd64-linux ~ia64 ~ia64-linux ~x86 ~x86-linux ~x86-solaris"
 IUSE=""
 
