@@ -1,6 +1,6 @@
 octopus
 =======
-My gentoo overlay for more up-to-date ebuilds than can be founded in portage and for some packages which still not in it.
+My gentoo overlay for more up-to-date ebuilds and for some interesting packages.
 
 Installation:
 =======
@@ -15,5 +15,10 @@ names_cache = ${location}/.cache/names
 write_cache = /var/cache/paludis/metadata
 ```
 
-# Layman
-Information is located at http://wiki.gentoo.org/wiki/Layman#Adding_custom_overlays
+
+own changes here:
+=======
+tcsh ebuild is fixed for 6.19.00
+trying to keep pf-sources fresh
+actual git version for htop
+custom patchset for dwm-9999

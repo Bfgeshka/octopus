@@ -31,20 +31,29 @@ DEPEND="${RDEPEND}
 CONFDIR=${WORKDIR}/tcsh-gentoo-patches-r${CONFVER}
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.14.00-debian-dircolors.patch # bug #120792
-	"${FILESDIR}"/${PN}-6.14-makefile.patch # bug #151951
-	"${FILESDIR}"/${PN}-6.14-use-ncurses.patch
-	"${FILESDIR}"/${PN}-6.18.01-aix.patch
-	"${FILESDIR}"/${PN}-6.18.01-gcc5.patch
+#	"${FILESDIR}"/${PN}-6.19.00-dircolors.patch # bug #120792
+#	"${FILESDIR}"/${PN}-6.14-makefile.patch # bug #151951
+#	"${FILESDIR}"/${PN}-6.14-use-ncurses.patch
+#	"${FILESDIR}"/${PN}-6.18.01-aix.patch
+#	"${FILESDIR}"/${PN}-6.18.01-gcc5.patch
+#	"${FILESDIR}"/${PN}-6.15.00-normalize-command-fix.patch
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+#	epatch "${PATCHES[@]}" 							# At least in 6.19 normalize-command-fix.patch is not needed,
+ 	for i in ${FILESDIR}/*.patch;do 				# applied in mainstream
+    	epatch "$i"    
+ 	done
 
-	# fix dependency on ncurses[tinfo], #459484
-	sed \
-		-e "s:\(ncurses\):\1 tinfo:g" \
-		-i configure.in || die
+
+
+#
+#	# fix dependency on ncurses[tinfo], #459484
+#	sed \
+#		-e "s:\(ncurses\):\1 tinfo:g" \				#not needed anymore
+#	#	-i configure.in || die
+#		-i configure.ac || die
+#
 
 	eautoreconf
 

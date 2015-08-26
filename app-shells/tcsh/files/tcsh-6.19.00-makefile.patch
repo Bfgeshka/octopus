@@ -4,13 +4,10 @@
 
 --- tcsh-6.14.00/Makefile.in
 +++ tcsh-6.14.00/Makefile.in
-@@ -477,9 +477,7 @@
+@@ -599,6 +599,5 @@
  
- install: tcsh$(EXEEXT) 
+ install: tcsh$(EXEEXT) install.catalogs install.man
  	-mkdir -p ${DESTBIN}
 -	-mv -f ${DESTBIN}/tcsh$(EXEEXT)  ${DESTBIN}/tcsh.old
  	cp tcsh$(EXEEXT) ${DESTBIN}/tcsh$(EXEEXT)
--	-strip ${DESTBIN}/tcsh$(EXEEXT)
  	chmod 755 ${DESTBIN}/tcsh$(EXEEXT)
- 
- install.man: tcsh.man
