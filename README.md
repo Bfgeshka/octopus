@@ -25,6 +25,5 @@ tcsh ebuild is fixed and updated for latest release
 trying to keep pf-sources fresh
 actual git version for htop
 custom patchset for dwm-9999
-fresh rmlint releases
 steam-launcher without zenity-3 (where zenity-3 brings gtk3)
 ```
