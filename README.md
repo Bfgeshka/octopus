@@ -4,7 +4,7 @@ My gentoo overlay for more up-to-date ebuilds and for some interesting packages.
 
 Installation:
 =======
-# Paludis
+### Paludis
 /etc/paludis/repositories/octopus.conf
 
 ```
@@ -15,9 +15,9 @@ names_cache = ${location}/.cache/names
 write_cache = /var/cache/paludis/metadata
 ```
 
-# Portage
-Manual installation via layman
-
+### Portage
+~~Manual installation via layman~~
+    layman -a octopus
 own changes here:
 =======
 ```
