@@ -1,10 +1,8 @@
-octopus
-=======
+#octopus
 My gentoo overlay for more up-to-date ebuilds and for some interesting packages.
 
-Installation:
-=======
-### Paludis
+## Installation:
+#### Paludis
 /etc/paludis/repositories/octopus.conf
 
 ```
@@ -15,11 +13,13 @@ names_cache = ${location}/.cache/names
 write_cache = /var/cache/paludis/metadata
 ```
 
-### Portage
+#### Portage
 ~~Manual installation via layman~~
-    layman -a octopus
-own changes here:
-=======
+```
+layman -a octopus
+```
+
+## own changes here:
 ```
 tcsh ebuild is fixed and updated for latest release
 trying to keep pf-sources fresh
