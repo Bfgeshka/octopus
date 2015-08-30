@@ -11,7 +11,7 @@ inherit git-r3
 #	https://github.com/LemonBoy/bar
 #
 
-DESCRIPTION="bar is a lightweight bar based entirely on XCB."
+DESCRIPTION="patched version of x11-misc/bar."
 HOMEPAGE="https://github.com/krypt-n/bar"
 EGIT_REPO_URI="git://github.com/krypt-n/bar"
 
