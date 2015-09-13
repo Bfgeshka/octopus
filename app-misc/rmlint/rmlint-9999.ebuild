@@ -27,7 +27,6 @@ src_compile(){
 	escons CC="$(tc-getCC)"
 }
 
-src_install() {
-#	escons DEBUG=1 LIBDIR=/usr/$(get_libdir) --prefix=/usr  install
+src_install(){
 	escons install LIBDIR=/usr/$(get_libdir) --prefix="${ED}"/usr
 }

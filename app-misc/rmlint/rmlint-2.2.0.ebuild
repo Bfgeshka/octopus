@@ -26,6 +26,5 @@ src_compile(){
 }
 
 src_install() {
-#	escons DEBUG=1 LIBDIR=/usr/$(get_libdir) --prefix=/usr  install
 	escons install LIBDIR=/usr/$(get_libdir) --prefix="${ED}"/usr
 }
