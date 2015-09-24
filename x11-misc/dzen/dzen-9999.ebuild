@@ -2,16 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/x11-misc/dzen/dzen-0.8.5.ebuild,v 1.4 2008/02/04 16:23:32 coldwind Exp $
 
-inherit toolchain-funcs multilib subversion
+EAPI=5
+inherit toolchain-funcs multilib git-r3
 
-SLOT="2"
-MY_P="${PN}${SLOT}-${PV}"
+SLOT="0"
 
 DESCRIPTION="a general purpose messaging, notification and menuing program for
 X11."
-HOMEPAGE="http://gotmor.googlepages.com/dzen"
-SRC_URI=""
-ESVN_REPO_URI="http://dzen.googlecode.com/svn/trunk/"
+HOMEPAGE="https://github.com/robm/dzen"
+EGIT_REPO_URI="git://github.com/robm/dzen"
 
 LICENSE="MIT"
 KEYWORDS="amd64 x86"
@@ -23,10 +22,7 @@ RDEPEND="x11-libs/libX11
 DEPEND="${RDEPEND}
 	xinerama? ( x11-proto/xineramaproto )"
 
-S=${WORKDIR}/${MY_P}
-
-src_unpack() {
-	subversion_fetch
+src_prepare() {
 	cd "${S}"
 	sed -e "s:/usr/local:/usr:g" \
 		-e "s:-Os:${CFLAGS}:g" \
