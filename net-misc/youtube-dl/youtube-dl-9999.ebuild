@@ -4,14 +4,12 @@
 
 EAPI=5
 
-PYTHON_COMPAT=(python{2_7,3_3,3_4,3_5})
+PYTHON_COMPAT=(python{2_7,3_3,3_4})
 DISTUTILS_SINGLE_IMPL=true
-
 inherit bash-completion-r1 distutils-r1 eutils git-r3
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://rg3.github.com/youtube-dl/"
-SRC_URI=""
 EGIT_REPO_URI="https://github.com/rg3/youtube-dl/"
 
 LICENSE="public-domain"
@@ -23,8 +21,6 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[coverage(+)] )
 "
-
-S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	if ! use offensive; then
@@ -82,8 +78,10 @@ src_test() {
 src_install() {
 	python_domodule youtube_dl
 	dobin bin/${PN}
-	dodoc README.txt
-	doman ${PN}.1
-	newbashcomp ${PN}.bash-completion ${PN}
+	dodoc README.md
+	# TODO build docs/
+	#doman ${PN}.1
+	# TODO build devscripts/
+	#newbashcomp ${PN}.bash-completion ${PN}
 	python_fix_shebang "${ED}"
 }
