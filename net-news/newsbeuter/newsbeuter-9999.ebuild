@@ -49,5 +49,5 @@ src_compile()
 src_install()
 {
 	emake prefix="${D}/usr" docdir="${D}/usr/share/doc/${PF}" install
-	dodoc AUTHORS README CHANGES
+	dodoc AUTHORS CHANGES
 }

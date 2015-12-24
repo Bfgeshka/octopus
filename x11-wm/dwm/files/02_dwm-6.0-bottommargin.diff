@@ -10,13 +10,15 @@
  static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 --- a/dwm.c
 +++ b/dwm.c
-@@ -1841,6 +1841,9 @@ updatebarpos(Monitor *m) {
+@@ -1841,8 +1841,11 @@ updatebarpos(Monitor *m)
+ {
+ 	m->wy = m->my;
  	m->wh = m->mh;
- 	if(m->showbar) {
+ 	if (m->showbar) {
  		m->wh -= bh;
-+        m->wh -= bottommargin;
-+        if(!m->topbar)
-+            m->wy += bottommargin;
++		m->wh -= bottommargin;
++		if (!m->topbar)
++			m->wy += bottommargin;
  		m->by = m->topbar ? m->wy : m->wy + m->wh;
  		m->wy = m->topbar ? m->wy + bh : m->wy;
  	}
