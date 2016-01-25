@@ -1,13 +1,11 @@
 --- a/config.def.h
 +++ b/config.def.h
-@@ -12,6 +12,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
+@@ -12,3 +12,4 @@ static const unsigned int borderpx  = 0;        /* border pixel of windows */
  static const unsigned int snap      = 32;       /* snap pixel */
- static const Bool showbar           = True;     /* False means no bar */
- static const Bool topbar            = True;     /* False means bottom bar */
-+static const unsigned int bottommargin = 20;    /* Margin at the bottom for another bar */
- 
- /* tagging */
- static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+ static const Bool showbar           = 1;     /* False means no bar */
+ static const Bool topbar            = 1;     /* False means bottom bar */
++static const unsigned int bottommargin = 12;    /* Margin at the bottom for another bar */
+
 --- a/dwm.c
 +++ b/dwm.c
 @@ -1841,8 +1841,11 @@ updatebarpos(Monitor *m)
@@ -21,4 +19,4 @@
 +			m->wy += bottommargin;
  		m->by = m->topbar ? m->wy : m->wy + m->wh;
  		m->wy = m->topbar ? m->wy + bh : m->wy;
- 	}
+ 	} else
