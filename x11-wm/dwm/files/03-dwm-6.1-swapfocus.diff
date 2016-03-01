@@ -24,7 +24,7 @@ Index: dwm/dwm.c
  static const char broken[] = "broken";
  static char stext[256];
  static int screen;
-@@ -1584,6 +1586,16 @@
+@@ -1584,7 +1586,17 @@
  }
  
  void
@@ -38,29 +38,32 @@ Index: dwm/dwm.c
 +}
 +
 +void
- tag(const Arg *arg) {
- 	if(selmon->sel && arg->ui & TAGMASK) {
+ tag(const Arg *arg)
+ {
+ 	if (selmon->sel && arg->ui & TAGMASK) {
  		selmon->sel->tags = arg->ui & TAGMASK;
-@@ -1675,6 +1687,7 @@
- unfocus(Client *c, Bool setfocus) {
- 	if(!c)
+@@ -1675,7 +1687,8 @@
+ unfocus(Client *c, int setfocus)
+ {
+ 	if (!c)
  		return;
 +	prevclient = c;
- 	grabbuttons(c, False);
- 	XSetWindowBorder(dpy, c->win, scheme[SchemeNorm].border->pix);
- 	if(setfocus) {
-@@ -2033,12 +2046,13 @@
+ 	grabbuttons(c, 0);
+ 	XSetWindowBorder(dpy, c->win, scheme[0].border->pix);
+ 	if (setfocus) {
+@@ -2033,13 +2046,14 @@
  void
- zoom(const Arg *arg) {
+ zoom(const Arg *arg)
+ {
  	Client *c = selmon->sel;
 +	prevclient = nexttiled(selmon->clients);
  
- 	if(!selmon->lt[selmon->sellt]->arrange
+ 	if (!selmon->lt[selmon->sellt]->arrange
  	|| (selmon->sel && selmon->sel->isfloating))
  		return;
- 	if(c == nexttiled(selmon->clients))
--		if(!c || !(c = nexttiled(c->next)))
-+		if(!c || !(c = prevclient = nexttiled(c->next)))
+ 	if (c == nexttiled(selmon->clients))
+-		if (!c || !(c = nexttiled(c->next)))
++		if (!c || !(c = prevclient = nexttiled(c->next)))
  			return;
  	pop(c);
  }

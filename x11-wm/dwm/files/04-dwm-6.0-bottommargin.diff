@@ -1,0 +1,25 @@
+diff --git a/config.def.h b/config.def.h
+index 77ff358..203d354 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -12,5 +12,6 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
+ static const unsigned int snap      = 32;       /* snap pixel */
+ static const int showbar            = 1;        /* 0 means no bar */
+ static const int topbar             = 1;        /* 0 means bottom bar */
++static const unsigned int bottommargin = 20;    /* Margin at the bottom for another bar */
+ 
+ /* tagging */
+diff --git a/dwm.c b/dwm.c
+index 1d78655..cece290 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -1841,6 +1841,9 @@ updatebarpos(Monitor *m) {
+ 	m->wh = m->mh;
+ 	if (m->showbar) {
+ 		m->wh -= bh;
++		m->wh -= marginbottom;
++		if (!m->topbar)
++			m->wy += marginbottom;
+ 		m->by = m->topbar ? m->wy : m->wy + m->wh;
+ 		m->wy = m->topbar ? m->wy + bh : m->wy;
+ 	} else
