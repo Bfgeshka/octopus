@@ -16,7 +16,7 @@ SLOT="0"
 DEPEND="
 	>=media-libs/libsamplerate-0.0.15
 	>=media-sound/jack-audio-connection-kit-0.99
-	>=sys-libs/fusd-1.10-r9"
+	>=sys-libs/fusd-kor-1.10-r9"
 
 S="${WORKDIR}/${PN}-${PV}"
 
