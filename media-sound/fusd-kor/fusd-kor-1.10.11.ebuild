@@ -12,7 +12,7 @@ HOMEPAGE="http://fort.xdas.com/~kor/oss2jack/"
 SRC_URI="http://fort.xdas.com/~kor/oss2jack/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 

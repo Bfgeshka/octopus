@@ -10,7 +10,7 @@ DESCRIPTION="oss2jack, a userspace OSS dsp emulation with jack backend"
 HOMEPAGE="http://fort.xdas.com/~kor/oss2jack/"
 SRC_URI="http://fort.xdas.com/~kor/oss2jack/${PN}-${PV}.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 DEPEND="
