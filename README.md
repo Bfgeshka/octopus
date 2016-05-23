@@ -7,7 +7,7 @@ My gentoo overlay for more up-to-date ebuilds and for some interesting packages.
 
 ```
 location = /var/db/paludis/repositories/octopus
-sync = git://github.com/Bfgeshka/octopus.git
+sync = https://github.com/Bfgeshka/octopus.git
 format = e
 names_cache = ${location}/.cache/names
 write_cache = /var/cache/paludis/metadata

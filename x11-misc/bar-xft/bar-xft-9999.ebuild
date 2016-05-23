@@ -13,7 +13,7 @@ inherit git-r3
 
 DESCRIPTION="patched version of x11-misc/bar."
 HOMEPAGE="https://github.com/krypt-n/bar"
-EGIT_REPO_URI="git://github.com/krypt-n/bar"
+EGIT_REPO_URI="https://github.com/krypt-n/bar"
 
 LICENSE="MIT"
 SLOT="0"
