@@ -10,7 +10,7 @@ SLOT="0"
 DESCRIPTION="a general purpose messaging, notification and menuing program for
 X11."
 HOMEPAGE="https://github.com/robm/dzen"
-EGIT_REPO_URI="git://github.com/robm/dzen"
+EGIT_REPO_URI="https://github.com/robm/dzen"
 
 LICENSE="MIT"
 KEYWORDS="amd64 x86"

@@ -8,7 +8,7 @@ inherit git-r3 font
 
 DESCRIPTION="monospace font"
 HOMEPAGE="https://github.com/lucy/tewi-font"
-EGIT_REPO_URI="git://github.com/lucy/tewi-font"
+EGIT_REPO_URI="https://github.com/lucy/tewi-font"
 
 LICENSE="GPL-3"
 SLOT="0"
