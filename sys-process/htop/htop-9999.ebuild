@@ -8,7 +8,7 @@ inherit git-r3
 
 DESCRIPTION="interactive process viewer"
 HOMEPAGE="http://htop.sourceforge.net"
-EGIT_REPO_URI="git://github.com/hishamhm/htop"
+EGIT_REPO_URI="https://github.com/hishamhm/htop"
 
 LICENSE="BSD GPL-2"
 SLOT="0"

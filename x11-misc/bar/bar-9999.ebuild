@@ -7,7 +7,7 @@ inherit git-r3
 
 DESCRIPTION="bar is a lightweight bar based entirely on XCB."
 HOMEPAGE="https://github.com/LemonBoy/bar"
-EGIT_REPO_URI="git://github.com/LemonBoy/bar"
+EGIT_REPO_URI="https://github.com/LemonBoy/bar"
 
 LICENSE="MIT"
 SLOT="0"
