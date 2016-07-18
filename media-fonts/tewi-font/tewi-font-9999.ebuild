@@ -26,7 +26,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_compile() {
-	if use pcf; then emake pcfs; fi
+	if use pcf; then emake all; fi
 }
 
 src_install() {
