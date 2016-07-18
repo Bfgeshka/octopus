@@ -6,10 +6,11 @@ EAPI=5
 
 inherit eutils savedconfig toolchain-funcs
 
+COMMIT="3465bed290abc62cb2e69a8096084ba6b8eb4956"
 DESCRIPTION="a dynamic window manager for X11"
 HOMEPAGE="http://dwm.suckless.org/"
-## More info: http://git.suckless.org/dwm/commit/?id=3465bed290abc62cb2e69a8096084ba6b8eb4956
-SRC_URI="http://git.suckless.org/dwm/snapshot/dwm-3465bed290abc62cb2e69a8096084ba6b8eb4956.tar.bz2"
+## More info: http://git.suckless.org/dwm
+SRC_URI="http://git.suckless.org/dwm/snapshot/dwm-${COMMIT}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,6 +25,11 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
+
+src_unpack() {
+	unpack ${A}
+	mv "dwm-${COMMIT}" ${P}
+}
 
 src_prepare() {
 	sed -i \
