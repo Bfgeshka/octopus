@@ -4,7 +4,7 @@
 
 EAPI=6
 
-REQUIRED_BUILDSPACE='7G'
+REQUIRED_BUILDSPACE='6G'
 
 inherit palemoon-1 git-r3 eutils flag-o-matic pax-utils
 
@@ -14,12 +14,15 @@ HOMEPAGE="https://www.palemoon.org/"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="+official-branding -system-libs +optimize shared-js jemalloc -valgrind
+IUSE="+official-branding
+	-system-sqlite -system-cairo -system-pixman -system-spell
+	-system-libevent -system-vpx -system-compress -system-images
+	+optimize shared-js jemalloc -valgrind
 	dbus -necko-wifi +gtk2 -gtk3 +gstreamer -webrtc
 	alsa pulseaudio"
 
-EGIT_REPO_URI="git://github.com/MoonchildProductions/Pale-Moon.git"
-GIT_TAG="27.1.0b2"
+EGIT_REPO_URI="https://github.com/MoonchildProductions/Pale-Moon.git"
+EGIT_BRANCH="master"
 
 RDEPEND="
 	>=sys-devel/autoconf-2.13:2.1
@@ -33,19 +36,21 @@ RDEPEND="
 	dev-lang/yasm
 	dev-lang/python:2.7
 
-	system-libs? (
-		dev-libs/libevent
-		media-libs/libjpeg-turbo
-		sys-libs/zlib
-		app-arch/bzip2
-		media-libs/libwebp
-		media-libs/libpng[apng]
-		app-text/hunspell
-		>=media-libs/libvpx-1.4.0
-		>=dev-db/sqlite-3.13.0[secure-delete]
-		x11-libs/cairo
-		x11-libs/pixman
-	)
+	system-sqlite? ( >=dev-db/sqlite-3.13.0[secure-delete] )
+	system-cairo? ( x11-libs/cairo )
+	system-pixman? ( x11-libs/pixman )
+	system-spell? ( app-text/hunspell )
+	system-libevent? ( dev-libs/libevent )
+	system-vpx? ( >=media-libs/libvpx-1.4.0 )
+	system-compress? (
+						sys-libs/zlib
+						app-arch/bzip2
+					 )
+	system-images?  (
+						media-libs/libjpeg-turbo
+						media-libs/libwebp
+						media-libs/libpng[apng]
+					)
 
 	optimize? ( sys-libs/glibc )
 
@@ -77,11 +82,6 @@ REQUIRED_USE="
 	^^ ( alsa pulseaudio )
 	necko-wifi? ( dbus )"
 
-src_unpack() {
-	git-r3_fetch ${EGIT_REPO_URI} refs/tags/${GIT_TAG}
-	git-r3_checkout
-}
-
 src_prepare() {
 	# Ensure that our plugins dir is enabled by default:
 	sed -i -e "s:/usr/lib/mozilla/plugins:/usr/lib/nsbrowser/plugins:" \
@@ -101,11 +101,40 @@ src_configure() {
 
 	mozconfig_disable updater
 
-	if use system-libs; then
-		mozconfig_with system-libevent system-jpeg system-zlib system-bz2 \
-			system-webp system-png system-libvpx
-		mozconfig_enable system-hunspell system-sqlite system-cairo \
-			system-pixman
+	# Let user some freedom
+	if use system-sqlite; then
+		mozconfig_enable system-sqlite
+	fi
+
+	if use system-cairo; then
+		mozconfig_enable system-cairo
+	fi
+
+	if use system-pixman; then
+		mozconfig_enable system-pixman
+	fi
+
+	if use system-hunspell; then
+		mozconfig_enable system-hunspell
+	fi
+
+	if use system-libevent; then
+		mozconfig_with system-libevent
+	fi
+
+	if use system-vpx; then
+		mozconfig_with system-libvpx
+	fi
+
+	if use system-compress; then
+		mozconfig_with system-zlib
+		mozconfig_with system-bz2
+	fi
+
+	if use system-images; then
+		mozconfig_with system-jpeg
+		mozconfig_with system-png
+		mozconfig_with system-webp
 	fi
 
 	if use optimize; then
@@ -150,7 +179,7 @@ src_configure() {
 		mozconfig_disable webrtc
 	fi
 
-	if   use alsa; then
+	if use alsa; then
 		mozconfig_enable alsa
 	fi
 
