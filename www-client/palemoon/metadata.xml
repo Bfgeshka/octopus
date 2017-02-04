@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name='system-sqlite'>Installed version of dev-db/sqlite instead of bundled.</flag>
+		<flag name='system-cairo'>Installed version of x11-libs/cairo instead of bundled.</flag>
+		<flag name='system-pixman'>Installed version of x11-libs/pixman instead of bundled.</flag>
+		<flag name='system-spell'>Installed version of app-text/hunspell instead of bundled.</flag>
+		<flag name='system-libevent'>Installed version of dev-libs/libevent instead of bundled.</flag>
+		<flag name='system-vpx'>Installed version of media-libs/libvpx instead of bundled.</flag>
+		<flag name='system-compress'>Installed version of sys-libs/zlib and app-arch/bzip2 instead of bundled.</flag>
+		<flag name='system-images'>Installed version of media-libs/libjpeg-turbo, media-libs/libwebp and media-libs/libpng instead of bundled.</flag>
+	</use>
+</pkgmetadata>
