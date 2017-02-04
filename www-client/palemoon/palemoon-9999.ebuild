@@ -114,7 +114,7 @@ src_configure() {
 		mozconfig_enable system-pixman
 	fi
 
-	if use system-hunspell; then
+	if use system-spell; then
 		mozconfig_enable system-hunspell
 	fi
 
@@ -136,6 +136,8 @@ src_configure() {
 		mozconfig_with system-png
 		mozconfig_with system-webp
 	fi
+
+
 
 	if use optimize; then
 		O=$(get-flag '-O*')
