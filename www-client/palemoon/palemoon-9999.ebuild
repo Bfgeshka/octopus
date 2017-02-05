@@ -8,7 +8,7 @@ REQUIRED_BUILDSPACE='6G'
 
 inherit palemoon-1 git-r3 eutils flag-o-matic pax-utils
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 DESCRIPTION="Pale Moon Web Browser"
 HOMEPAGE="https://www.palemoon.org/"
 
