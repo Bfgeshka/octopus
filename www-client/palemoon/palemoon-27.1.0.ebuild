@@ -33,7 +33,6 @@ RDEPEND="
 	media-libs/fontconfig
 	virtual/pkgconfig
 
-
 	dev-lang/yasm
 	dev-lang/python:2.7
 
@@ -80,6 +79,11 @@ REQUIRED_USE="
 	^^ ( alsa pulseaudio )
 	necko-wifi? ( dbus )"
 
+src_unpack() {
+	git-r3_fetch ${EGIT_REPO_URI} refs/tags/${GIT_TAG}
+	git-r3_checkout
+}
+
 src_prepare() {
 	# Ensure that our plugins dir is enabled by default:
 	sed -i -e "s:/usr/lib/mozilla/plugins:/usr/lib/nsbrowser/plugins:" \
@@ -96,7 +100,6 @@ src_prepare() {
 src_configure() {
 	# Basic configuration:
 	mozconfig_init
-
 	mozconfig_disable updater
 
 	# Let user some freedom
@@ -223,8 +226,6 @@ src_install() {
 	local obj_dir="$(echo */config.log)"
 	obj_dir="${obj_dir%/*}"
 
-	VER="$(cat browser/config/version.txt)"
-
 	# Disable MPROTECT for startup cache creation:
 	pax-mark m "${obj_dir}"/dist/bin/xpcshell
 
@@ -233,13 +234,13 @@ src_install() {
 
 	# Gotta create the package, unpack it and manually install the files
 	# from there not to miss anything (e.g. the statusbar extension):
-	einfo "Creating the package...ver.${VER}"
+	einfo "Creating the package..."
 	python2 mach package || die
 	local extracted_dir="${T}/package"
 	mkdir -p "${extracted_dir}"
 	cd "${extracted_dir}"
 	einfo "Extracting the package..."
-	tar xjpf "${S}/${obj_dir}/dist/${PN}-${VER}.linux-${CTARGET_default%%-*}.tar.bz2"
+	tar xjpf "${S}/${obj_dir}/dist/${P}.linux-${CTARGET_default%%-*}.tar.bz2"
 	einfo "Installing the package..."
 	local dest_libdir="/usr/$(get_libdir)"
 	mkdir -p "${D}/${dest_libdir}"
