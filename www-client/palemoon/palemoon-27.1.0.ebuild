@@ -18,7 +18,7 @@ IUSE="+official-branding
 	-system-sqlite -system-cairo -system-pixman -system-spell
 	-system-libevent -system-vpx -system-compress -system-images
 	+optimize shared-js jemalloc -valgrind
-	dbus -necko-wifi +gtk2 -gtk3 +ffmpeg -webrtc +strip-binaries
+	dbus -necko-wifi +gtk2 -gtk3 +ffmpeg -webrtc strip-binaries
 	alsa pulseaudio"
 
 EGIT_REPO_URI="git://github.com/MoonchildProductions/Pale-Moon.git"
@@ -32,7 +32,7 @@ RDEPEND="
 	media-libs/freetype
 	media-libs/fontconfig
 	virtual/pkgconfig
-	media-video/ffmpeg
+
 
 	dev-lang/yasm
 	dev-lang/python:2.7
@@ -69,6 +69,8 @@ RDEPEND="
 
 	alsa? ( media-libs/alsa-lib )
 	pulseaudio? ( media-sound/pulseaudio )
+
+	ffmpeg? ( media-video/ffmpeg )
 
 	necko-wifi? ( net-wireless/wireless-tools )"
 
