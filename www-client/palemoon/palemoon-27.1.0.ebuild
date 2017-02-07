@@ -8,7 +8,7 @@ REQUIRED_BUILDSPACE='6G'
 
 inherit palemoon-1 git-r3 eutils flag-o-matic pax-utils
 
-KEYWORDS=""
+KEYWORDS="~x86 ~amd64"
 DESCRIPTION="Pale Moon Web Browser"
 HOMEPAGE="https://www.palemoon.org/"
 
@@ -18,11 +18,11 @@ IUSE="+official-branding
 	-system-sqlite -system-cairo -system-pixman -system-spell
 	-system-libevent -system-vpx -system-compress -system-images
 	+optimize shared-js jemalloc -valgrind
-	dbus -necko-wifi +gtk2 -gtk3 +gstreamer -webrtc
+	dbus -necko-wifi +gtk2 -gtk3 +ffmpeg -webrtc +strip-binaries
 	alsa pulseaudio"
 
-EGIT_REPO_URI="https://github.com/MoonchildProductions/Pale-Moon.git"
-EGIT_BRANCH="master"
+EGIT_REPO_URI="git://github.com/MoonchildProductions/Pale-Moon.git"
+GIT_TAG="${PV}_Release"
 
 RDEPEND="
 	>=sys-devel/autoconf-2.13:2.1
@@ -32,6 +32,7 @@ RDEPEND="
 	media-libs/freetype
 	media-libs/fontconfig
 	virtual/pkgconfig
+	media-video/ffmpeg
 
 	dev-lang/yasm
 	dev-lang/python:2.7
@@ -65,11 +66,6 @@ RDEPEND="
 
 	gtk2? ( >=x11-libs/gtk+-2.18.0:2 )
 	gtk3? ( >=x11-libs/gtk+-3.4.0:3 )
-
-	gstreamer? (
-		media-libs/gstreamer:1.0
-		media-libs/gst-plugins-base:1.0
-	)
 
 	alsa? ( media-libs/alsa-lib )
 	pulseaudio? ( media-sound/pulseaudio )
@@ -169,12 +165,6 @@ src_configure() {
 		mozconfig_disable necko-wifi
 	fi
 
-	if use gstreamer; then
-		mozconfig_enable gstreamer
-	else
-		mozconfig_disable gstreamer
-	fi
-
 	if use webrtc; then
 		mozconfig_enable webrtc
 	else
@@ -200,6 +190,15 @@ src_configure() {
 
 	if use gtk3; then
 		mozconfig_enable default-toolkit=\"cairo-gtk3\"
+	fi
+
+	if use strip-binaries; then
+		mozconfig_enable strip
+		mozconfig_enable install-strip
+	fi
+
+	if ! use ffmpeg; then
+		mozconfig_disable ffmpeg
 	fi
 
 	export MOZBUILD_STATE_PATH="${WORKDIR}/mach_state"
