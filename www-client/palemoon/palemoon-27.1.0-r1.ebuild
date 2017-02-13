@@ -6,7 +6,7 @@ EAPI=6
 
 REQUIRED_BUILDSPACE='6G'
 
-inherit palemoon-1 git-r3 eutils flag-o-matic pax-utils
+inherit palemoon-2 git-r3 eutils flag-o-matic pax-utils
 
 KEYWORDS="~x86 ~amd64"
 DESCRIPTION="Pale Moon Web Browser"
@@ -19,7 +19,8 @@ IUSE="+official-branding
 	-system-libevent -system-vpx -system-compress -system-images
 	+optimize shared-js jemalloc -valgrind
 	dbus -necko-wifi +gtk2 -gtk3 +ffmpeg -webrtc strip-binaries
-	alsa pulseaudio"
+	alsa pulseaudio
+	+printing +speech +webm +wave joystick"
 
 EGIT_REPO_URI="git://github.com/MoonchildProductions/Pale-Moon.git"
 GIT_TAG="${PV}_Release"
@@ -70,6 +71,8 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 
 	ffmpeg? ( media-video/ffmpeg )
+
+	joystick? ( sys-kernel/linux-headers )
 
 	necko-wifi? ( net-wireless/wireless-tools )"
 
@@ -202,6 +205,26 @@ src_configure() {
 
 	if ! use ffmpeg; then
 		mozconfig_disable ffmpeg
+	fi
+
+	if ! use printing; then
+		mozconfig_disable printing
+	fi
+
+	if ! use speech; then
+		mozconfig_disable webspeech
+	fi
+
+	if ! use webm; then
+		mozconfig_disable webm
+	fi
+
+	if ! use wave; then
+		mozconfig_disable webm
+	fi
+
+	if ! use joystick; then
+		mozconfig_disable gamepad
 	fi
 
 	export MOZBUILD_STATE_PATH="${WORKDIR}/mach_state"
