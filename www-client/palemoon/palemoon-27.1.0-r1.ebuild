@@ -104,6 +104,7 @@ src_configure() {
 	# Basic configuration:
 	mozconfig_init
 	mozconfig_disable updater
+	mozconfig_disable gstreamer
 
 	# Let user some freedom
 	if use system-sqlite; then
