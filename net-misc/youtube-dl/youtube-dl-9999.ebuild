@@ -20,25 +20,23 @@ RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[coverage(+)] )"
 
-S="${WORKDIR}/${PN}"
-
 python_prepare_all() {
 	if ! use offensive; then
 		sed -i -e "/__version__/s|'$|-gentoo_no_offensive_sites'|g" \
 			youtube_dl/version.py || die
 		# these have single line import statements
 		local xxx=(
-			alphaporno anysex behindkink camwithher chaturbate eporner
+			alphaporno anysex behindkink camwithher chaturbate drtuber eporner
 			eroprofile extremetube fourtube foxgay goshgay hellporno
 			hentaistigma hornbunny keezmovies lovehomeporn mofosex motherless
-			myvidster porn91 porncom pornhd pornotube pornovoisines pornoxo
+			myvidster porn91 pornhd pornotube pornovoisines pornoxo redtube
 			ruleporn sexu slutload spankbang spankwire sunporno thisav tube8
 			vporn watchindianporn xbef xnxx xtube xvideos xxxymovies youjizz
 			youporn
 		)
 		# these have multi-line import statements
 		local mxxx=(
-			drtuber pornhub redtube xhamster tnaflix
+			pornhub xhamster tnaflix
 		)
 		# do single line imports
 		sed -i \
