@@ -78,14 +78,6 @@ python_test() {
 python_install_all() {
 	dodoc README.md
 
-	newbashcomp ${PN}.bash-completion ${PN}
-
-	insinto /usr/share/zsh/site-functions
-	newins youtube-dl.zsh _youtube-dl
-
-	insinto /usr/share/fish/completions
-	doins youtube-dl.fish
-
 	distutils-r1_python_install_all
 
 	rm -r "${ED}"/usr/etc || die
