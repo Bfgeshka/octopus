@@ -6,7 +6,7 @@ inherit check-reqs gnome2-utils fdo-mime
 
 EXPORT_FUNCTIONS pkg_pretend pkg_preinst pkg_postinst pkg_postrm pkg_setup
 
-palemoon-1_pkg_pretend() {
+palemoon-2_pkg_pretend() {
 	# Ensure we have enough disk space to compile:
 	CHECKREQS_DISK_BUILD=${REQUIRED_BUILDSPACE}
 	check-reqs_pkg_setup
@@ -21,21 +21,21 @@ palemoon-1_pkg_pretend() {
 	fi
 }
 
-palemoon-1_pkg_preinst() {
+palemoon-2_pkg_preinst() {
 	gnome2_icon_savelist
 }
 
-palemoon-1_pkg_postinst() {
+palemoon-2_pkg_postinst() {
 	# Update mimedb for the new .desktop file:
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
 }
 
-palemoon-1_pkg_postrm() {
+palemoon-2_pkg_postrm() {
 	gnome2_icon_cache_update
 }
 
-palemoon-1_pkg_setup() {
+palemoon-2_pkg_setup() {
 	# Nested configure scripts in mozilla products generate unrecognized
 	# options false positives when toplevel configure passes downwards:
 	export QA_CONFIGURE_OPTIONS=".*"
