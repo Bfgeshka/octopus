@@ -1,30 +1,41 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
-inherit scons-utils eutils git-2
+inherit scons-utils eutils git-r3 multilib
 
-DESCRIPTION="commandline tool to clean your filesystem from various sort of lint (unused files, twins, etc.)."
+DESCRIPTION="rmlint finds space waste and other broken things on your filesystem and offers to remove it."
 HOMEPAGE="https://github.com/sahib/rmlint"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/sahib/rmlint.git"
 EGIT_BRANCH="master"
 
-LICENSE=""
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="doc +nls"
 
-RDEPEND=""
+
+RDEPEND="
+	dev-libs/elfutils
+	>=dev-libs/glib-2.32
+	dev-libs/json-glib
+	sys-apps/util-linux
+	sys-libs/glibc"
+
 DEPEND="${RDEPEND}
-		dev-util/scons
-		dev-python/sphinx
-		sys-devel/gettext"
+	nls? ( sys-devel/gettext )
+    doc? ( dev-python/sphinx )"
 
-src_compile(){
-	escons CC="$(tc-getCC)"
+src_compile() {
+	COMP_FLAGS=CC="\"$(tc-getCC)\" --prefix=${D}/usr --actual-prefix=/usr --libdir=/usr/$(get_libdir)"
+	if ! use nls; then
+		COMP_FLAGS += "--without-gettext"
+	fi
+
+	escons "${COMP_FLAGS}"
 }
 
 src_install(){
