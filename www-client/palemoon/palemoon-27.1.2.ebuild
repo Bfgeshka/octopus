@@ -222,7 +222,7 @@ src_configure() {
 	fi
 
 	if ! use wave; then
-		mozconfig_disable webm
+		mozconfig_disable wave
 	fi
 
 	if ! use joystick; then
