@@ -40,6 +40,8 @@ src_compile() {
 
 src_install(){
 	escons install LIBDIR=/usr/$(get_libdir) --prefix="${ED}"/usr
-	rm -f "${D}/usr/share/glib-2.0/schemas/gschemas.compiled"
-	rm -rf "${D}/usr/share/man"
+	rm -f "${D}"/usr/share/glib-2.0/schemas/gschemas.compiled
+	if ! use doc; then
+		rm -rf "${D}"/usr/share/man
+	fi
 }
