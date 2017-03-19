@@ -72,8 +72,6 @@ RDEPEND="
 
 	ffmpeg? ( media-video/ffmpeg )
 
-	joystick? ( sys-kernel/linux-headers )
-
 	necko-wifi? ( net-wireless/wireless-tools )"
 
 REQUIRED_USE="
