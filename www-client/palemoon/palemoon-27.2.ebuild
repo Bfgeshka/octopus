@@ -20,7 +20,7 @@ IUSE="+official-branding
 	+optimize shared-js jemalloc -valgrind devtools
 	dbus -necko-wifi +gtk2 -gtk3 +ffmpeg -webrtc strip-binaries
 	alsa pulseaudio
-	+printing +speech +webm +wave joystick spell"
+	+printing +speech +webm +wave spell"
 
 EGIT_REPO_URI="git://github.com/MoonchildProductions/Pale-Moon.git"
 GIT_TAG="${PV}_Release"
@@ -223,10 +223,6 @@ src_configure() {
 
 	if ! use wave; then
 		mozconfig_disable wave
-	fi
-
-	if ! use joystick; then
-		mozconfig_disable gamepad
 	fi
 
 	if ! use spell; then
