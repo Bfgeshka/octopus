@@ -21,7 +21,7 @@ IUSE="+official-branding
 	dbus -necko-wifi +gtk2 -gtk3 +ffmpeg -webrtc strip-binaries
 	alsa pulseaudio"
 
-EGIT_REPO_URI="git://github.com/MoonchildProductions/Pale-Moon.git"
+EGIT_REPO_URI="https://github.com/MoonchildProductions/Pale-Moon.git"
 GIT_TAG="${PV}_Release"
 
 RDEPEND="
