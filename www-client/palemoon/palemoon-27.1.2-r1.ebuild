@@ -22,7 +22,7 @@ IUSE="+official-branding
 	alsa pulseaudio
 	+printing +speech +webm +wave joystick spell"
 
-EGIT_REPO_URI="git://github.com/MoonchildProductions/Pale-Moon.git"
+EGIT_REPO_URI="https://github.com/MoonchildProductions/Pale-Moon.git"
 GIT_TAG="${PV}_Release"
 
 RDEPEND="
