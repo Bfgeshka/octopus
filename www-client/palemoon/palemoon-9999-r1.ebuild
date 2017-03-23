@@ -8,7 +8,7 @@ REQUIRED_BUILDSPACE='6G'
 
 inherit palemoon-2 git-r3 eutils flag-o-matic pax-utils
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 DESCRIPTION="Pale Moon Web Browser"
 HOMEPAGE="https://www.palemoon.org/"
 
@@ -16,14 +16,13 @@ SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="+official-branding
 	-system-sqlite -system-cairo -system-pixman -system-spell
-	-system-libevent -system-vpx -system-compress -system-images
-	+optimize shared-js jemalloc -valgrind
+	-system-libevent -system-vpx -system-compress -system-images -system-nss
+	+optimize shared-js jemalloc -valgrind devtools
 	dbus -necko-wifi +gtk2 -gtk3 +ffmpeg -webrtc strip-binaries
 	alsa pulseaudio
-	+printing +speech +webm +wave joystick"
+	+printing +speech +webm +wave spell"
 
 EGIT_REPO_URI="https://github.com/MoonchildProductions/Pale-Moon.git"
-GIT_TAG="${PV}_Release"
 
 RDEPEND="
 	>=sys-devel/autoconf-2.13:2.1
@@ -44,7 +43,7 @@ RDEPEND="
 	system-libevent? ( dev-libs/libevent )
 	system-vpx? ( >=media-libs/libvpx-1.4.0 )
 	system-compress? (
-						sys-libs/zlib
+						>=sys-libs/zlib-1.2.3
 						app-arch/bzip2
 					 )
 	system-images?  (
@@ -52,6 +51,8 @@ RDEPEND="
 						media-libs/libwebp
 						media-libs/libpng[apng]
 					)
+
+	system-nss? ( >=dev-libs/nss-3.28.3 )
 
 	optimize? ( sys-libs/glibc )
 
@@ -72,20 +73,14 @@ RDEPEND="
 
 	ffmpeg? ( media-video/ffmpeg )
 
-	joystick? ( sys-kernel/linux-headers )
-
 	necko-wifi? ( net-wireless/wireless-tools )"
 
 REQUIRED_USE="
 	jemalloc? ( !valgrind )
 	^^ ( gtk2 gtk3 )
 	^^ ( alsa pulseaudio )
-	necko-wifi? ( dbus )"
-
-src_unpack() {
-	git-r3_fetch ${EGIT_REPO_URI} refs/tags/${GIT_TAG}
-	git-r3_checkout
-}
+	necko-wifi? ( dbus )
+	system-spell? ( spell )"
 
 src_prepare() {
 	# Ensure that our plugins dir is enabled by default:
@@ -140,6 +135,10 @@ src_configure() {
 		mozconfig_with system-jpeg
 		mozconfig_with system-png
 		mozconfig_with system-webp
+	fi
+
+	if use system-nss; then
+		mozconfig_with system-nss
 	fi
 
 	if use optimize; then
@@ -221,11 +220,15 @@ src_configure() {
 	fi
 
 	if ! use wave; then
-		mozconfig_disable webm
+		mozconfig_disable wave
 	fi
 
-	if ! use joystick; then
-		mozconfig_disable gamepad
+	if ! use spell; then
+		mozconfig_enable extensions=-spellcheck
+	fi
+
+	if use devtools; then
+		mozconfig_enable devtools
 	fi
 
 	export MOZBUILD_STATE_PATH="${WORKDIR}/mach_state"
@@ -262,7 +265,7 @@ src_install() {
 	mkdir -p "${extracted_dir}"
 	cd "${extracted_dir}"
 	einfo "Extracting the package..."
-	tar xjpf "${S}/${obj_dir}/dist/${P}.linux-${CTARGET_default%%-*}.tar.bz2"
+	tar xjpf "${S}/${obj_dir}/dist/"${PN}*.tar.bz2 || die
 	einfo "Installing the package..."
 	local dest_libdir="/usr/$(get_libdir)"
 	mkdir -p "${D}/${dest_libdir}"
