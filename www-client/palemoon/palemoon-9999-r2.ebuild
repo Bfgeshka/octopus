@@ -81,8 +81,7 @@ REQUIRED_USE="
 	^^ ( gtk2 gtk3 )
 	^^ ( alsa pulseaudio )
 	necko-wifi? ( dbus )
-	system-spell? ( spell )
-	optimize? (cpu_flags_x86_sse2 cpu_flags_x86_sse)"
+	system-spell? ( spell )"
 
 src_prepare() {
 	# Ensure that our plugins dir is enabled by default:
@@ -145,7 +144,14 @@ src_configure() {
 
 	if use optimize; then
 		O=$(get-flag '-O*')
-		mozconfig_enable optimize=\"$O -march=native -pipe -msse2 -mfpmath=sse\"
+		opt_flags=""
+		if use cpu_flags_x86_sse; then
+			opt_flags+=" -mfpmath=sse"
+			if use cpu_flags_x86_sse2; then
+				opt_flags+=" -msse2"
+			fi
+		fi
+		mozconfig_enable optimize=\"$O -march=native -pipe $opt_flags\"
 		filter-flags '-O*'
 	else
 		mozconfig_disable optimize
