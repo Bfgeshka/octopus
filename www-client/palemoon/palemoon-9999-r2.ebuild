@@ -146,13 +146,12 @@ src_configure() {
 		O=$(get-flag '-O*')
 		opt_flags=""
 		if use cpu_flags_x86_sse; then
-			opt_flags+=" -mfpmath=sse"
 			if use cpu_flags_x86_sse2; then
-				opt_flags+=" -msse2"
+				opt_flags="-mfpmath=sse\ -msse2"
 			fi
 		fi
-		mozconfig_enable optimize=\"$O -march=native -pipe $opt_flags\"
-		filter-flags '-O*'
+		mozconfig_enable optimize=\"$O\ -march=native\ -pipe\ $opt_flags\"
+	#	filter-flags '-O*'
 	else
 		mozconfig_disable optimize
 	fi
