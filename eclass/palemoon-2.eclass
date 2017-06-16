@@ -14,9 +14,12 @@ palemoon-2_pkg_pretend() {
 	# Ensure we are not on a gcc 5.* profile:
 	if [ "$(cc --version | head -c 3)" == "gcc" ]; then
 		einfo "Checking gcc version..."
-		if [[ "5" == "$(gcc -dumpversion | cut -d. -f1)" ]]; then
-			gcc-5_error
-			die
+		if [ "$(gcc -dumpversion | head -c 1)" -ge 5 ]; then
+			gcc-5_warning
+			if [ "$(gcc -dumpversion | head -c 1)" -eq 7 ]; then
+				gcc-7_error
+				die
+			fi
 		fi
 	fi
 }
@@ -48,15 +51,22 @@ official-branding_warning() {
 	elog "You can disable it by emerging ${PN} _without_ the official-branding USE-flag"
 }
 
-gcc-5_error() {
-	eerror "You are currently on a gcc 5.* compiler profile."
-	eerror "Building Pale Moon with gcc >=5 results in a very unstable build."
+gcc-5_warning() {
+	eerror "Building Pale Moon with gcc >=5 may result in an unstable build."
 	eerror "You can use gcc-config to change your compiler profile,"
 	eerror "just remember to change it back afterwards."
 	eerror "You need to have the appropriate versions of gcc installed"
 	eerror "for them to be shown in gcc-config."
 }
 
+gcc-7_error() {
+	eerror "You are currently on a gcc 7.* compiler profile."
+	eerror "Building Pale Moon with gcc 7 is risky and rarely possible."
+	eerror "You can use gcc-config to change your compiler profile,"
+	eerror "just remember to change it back afterwards."
+	eerror "You need to have the appropriate versions of gcc installed"
+	eerror "for them to be shown in gcc-config."
+}
 mozconfig_init() {
 	cp -L "${S}/browser/config/mozconfig" "${S}/.mozconfig" || die
 }
