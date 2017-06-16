@@ -15,11 +15,11 @@ palemoon-2_pkg_pretend() {
 	if [ "$(cc --version | head -c 3)" == "gcc" ]; then
 		einfo "Checking gcc version..."
 		if [ "$(gcc -dumpversion | head -c 1)" -ge 5 ]; then
-			gcc-5_warning
 			if [ "$(gcc -dumpversion | head -c 1)" -eq 7 ]; then
 				gcc-7_error
 				die
 			fi
+			gcc-5_warning
 		fi
 	fi
 }
