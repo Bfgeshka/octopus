@@ -27,7 +27,7 @@ DEPEND="sys-libs/ncurses
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-    eautoreconf
+    autoreconf --no-recursive
 }
 
 src_configure() {
