@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc +nls"
 
-
 RDEPEND="
 	dev-libs/elfutils
 	>=dev-libs/glib-2.32
@@ -27,7 +26,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
-    doc? ( dev-python/sphinx )"
+	doc? ( dev-python/sphinx )"
 
 src_compile() {
 	COMP_FLAGS=CC="\"$(tc-getCC)\" --prefix=${D}/usr --actual-prefix=/usr --libdir=/usr/$(get_libdir)"
