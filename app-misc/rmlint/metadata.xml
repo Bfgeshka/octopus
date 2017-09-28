@@ -7,4 +7,7 @@
 	<use>
 		<flag name='doc'>Generate documentation via sphinx.</flag>
 	</use>
+	<longdescription lang="en">
+	rmlint finds space waste and other broken things on your filesystem and offers to remove it.
+	</longdescription>
 </pkgmetadata>
