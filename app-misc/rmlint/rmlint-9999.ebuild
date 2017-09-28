@@ -6,7 +6,7 @@ EAPI=6
 
 inherit scons-utils eutils git-r3 multilib
 
-DESCRIPTION="rmlint finds space waste and other broken things on your filesystem and offers to remove it."
+DESCRIPTION="Tool for cleaning up your filesystem"
 HOMEPAGE="https://github.com/sahib/rmlint"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/sahib/rmlint.git"
