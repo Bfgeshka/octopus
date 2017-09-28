@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<maintainer type="person">
-	<email>bfg@derpy.ru</email>
-</maintainer>
 <pkgmetadata>
+	<maintainer type="person">
+		<email>"bfg@derpy.ru"</email>
+	</maintainer>
 	<use>
 		<flag name='system-sqlite'>Installed version of dev-db/sqlite instead of bundled.</flag>
 		<flag name='system-cairo'>Installed version of x11-libs/cairo instead of bundled.</flag>
