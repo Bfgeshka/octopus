@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -41,11 +41,9 @@ PATCHES=(
 
 src_prepare() {
 #	epatch "${PATCHES[@]}" 							# At least in 6.19 normalize-command-fix.patch is not needed,
- 	for i in ${FILESDIR}/*.patch;do 				# applied in mainstream
-    	epatch "$i"
- 	done
-
-
+	for i in ${FILESDIR}/*.patch;do 				# applied in mainstream
+		epatch "$i"
+	done
 
 #
 #	# fix dependency on ncurses[tinfo], #459484
