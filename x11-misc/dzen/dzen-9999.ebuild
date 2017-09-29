@@ -1,14 +1,12 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/dzen/dzen-0.8.5.ebuild,v 1.4 2008/02/04 16:23:32 coldwind Exp $
 
-EAPI=5
+EAPI=6
 inherit toolchain-funcs multilib git-r3
 
 SLOT="0"
 
-DESCRIPTION="a general purpose messaging, notification and menuing program for
-X11."
+DESCRIPTION="a general purpose messaging, notification and menuing program for X11."
 HOMEPAGE="https://github.com/robm/dzen"
 EGIT_REPO_URI="https://github.com/robm/dzen"
 
@@ -23,7 +21,6 @@ DEPEND="${RDEPEND}
 	xinerama? ( x11-proto/xineramaproto )"
 
 src_prepare() {
-	cd "${S}"
 	sed -e "s:/usr/local:/usr:g" \
 		-e "s:-Os:${CFLAGS}:g" \
 		-e "/CC/s:gcc:$(tc-getCC):" \
@@ -40,6 +37,8 @@ src_prepare() {
 			-e "/^CFLAGS/s/$/\ -DDZEN_XPM/" \
 			-i config.mk || die "sed failed"
 	fi
+
+	eapply_user
 }
 
 src_compile() {
