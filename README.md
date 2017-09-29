@@ -24,7 +24,7 @@ layman -a octopus
 ```
 asciiquarium
 rmlint
-fork of `lemonbar` with XFT support
+fork of lemonbar with XFT support
 ebuilds for browser Palemoon
 actual git version for htop
 actual git version for fish
