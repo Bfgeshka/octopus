@@ -4,4 +4,8 @@
 	<maintainer type="person">
 		<email>"bfg@derpy.ru"</email>
 	</maintainer>
+	<use>
+		<flag name='openvz'>Support virtualization via OpenVZ.</flag>
+		<flag name='vserver'>Support virtualization via Linux-VServer.</flag>
+	</use>
 </pkgmetadata>
