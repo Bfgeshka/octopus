@@ -1,9 +1,10 @@
 #octopus
+
 My gentoo overlay for more up-to-date ebuilds and for some interesting packages.
 
 ## Installation:
 #### Paludis
-/etc/paludis/repositories/octopus.conf
+`/etc/paludis/repositories/octopus.conf`
 
 ```
 location = /var/db/paludis/repositories/octopus
@@ -19,11 +20,13 @@ write_cache = /var/cache/paludis/metadata
 layman -a octopus
 ```
 
-## own changes here:
+## notable things:
 ```
-tcsh ebuild is fixed and updated for latest release
-trying to keep pf-sources fresh
+asciiquarium
+rmlint
+fork of `lemonbar` with XFT support
+ebuilds for browser Palemoon
 actual git version for htop
-custom patchset for dwm-9999
-steam-launcher without zenity-3 (where zenity-3 brings gtk3)
+actual git version for fish
+custom patchset for dwm
 ```
