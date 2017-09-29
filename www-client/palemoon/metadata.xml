@@ -11,6 +11,7 @@
 		<flag name='system-spell'>Installed version of app-text/hunspell instead of bundled.</flag>
 		<flag name='system-libevent'>Installed version of dev-libs/libevent instead of bundled.</flag>
 		<flag name='system-vpx'>Installed version of media-libs/libvpx instead of bundled.</flag>
+		<flag name='system-nss'>Installed version of dev-libs/nss instead of bundled.</flag>
 		<flag name='system-compress'>Installed version of sys-libs/zlib and app-arch/bzip2 instead of bundled.</flag>
 		<flag name='system-images'>Installed version of media-libs/libjpeg-turbo, media-libs/libwebp and media-libs/libpng instead of bundled.</flag>
 		<flag name='gtk2'>Use GTK+2 GUI toolkit.</flag>
@@ -26,5 +27,7 @@
 		<flag name='wave'>Build with Wave decoder support.</flag>
 		<flag name='webm'>Build with support for WebM media (VP8 video and Vorbis audio).</flag>
 		<flag name='webrtc'>Build with support for WebRTC protocol.</flag>
+		<flag name='devtools'>Build with developer tools support.</flag>
+		<flag name='shared-js'>Use shared JS feature while compiling.</flag>
 	</use>
 </pkgmetadata>
