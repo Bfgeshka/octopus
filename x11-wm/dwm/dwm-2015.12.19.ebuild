@@ -1,20 +1,18 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=6
 
 inherit eutils savedconfig toolchain-funcs
 
 COMMIT="3465bed290abc62cb2e69a8096084ba6b8eb4956"
 DESCRIPTION="a dynamic window manager for X11"
 HOMEPAGE="http://dwm.suckless.org/"
-## More info: http://git.suckless.org/dwm
 SRC_URI="http://git.suckless.org/dwm/snapshot/dwm-${COMMIT}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 x86"
 IUSE="xinerama"
 
 DEPEND="
@@ -47,12 +45,12 @@ src_prepare() {
 		-e 's|@${CC}|$(CC)|g' \
 		Makefile || die
 
- 	for i in ${FILESDIR}/*.diff;do
-    	epatch "$i"
- 	done
+	for i in "${FILESDIR}"/*.diff; do
+		eapply "$i"
+	done
 
 	restore_config config.h
-	epatch_user
+	eapply_user
 }
 
 src_compile() {
