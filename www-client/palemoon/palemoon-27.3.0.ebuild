@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -26,15 +25,12 @@ EGIT_REPO_URI="https://github.com/MoonchildProductions/Pale-Moon.git"
 GIT_TAG="${PV}_Release"
 
 RDEPEND="
-	>=sys-devel/autoconf-2.13:2.1
 	>=dev-lang/perl-5.6
 	x11-libs/libXt
 	app-arch/zip
 	media-libs/freetype
 	media-libs/fontconfig
-	virtual/pkgconfig
 
-	dev-lang/yasm
 	dev-lang/python:2.7
 
 	system-sqlite? ( >=dev-db/sqlite-3.13.0[secure-delete] )
@@ -43,15 +39,19 @@ RDEPEND="
 	system-spell? ( app-text/hunspell )
 	system-libevent? ( dev-libs/libevent )
 	system-vpx? ( >=media-libs/libvpx-1.4.0 )
-	system-compress? (
-						sys-libs/zlib
-						app-arch/bzip2
-					 )
-	system-images?  (
-						media-libs/libjpeg-turbo
-						media-libs/libwebp
-						media-libs/libpng[apng]
-					)
+
+	system-compress?
+	(
+		sys-libs/zlib
+		app-arch/bzip2
+	)
+
+	system-images?
+	(
+		media-libs/libjpeg-turbo
+		media-libs/libwebp
+		media-libs/libpng:*[apng]
+	)
 
 	optimize? ( sys-libs/glibc )
 
@@ -59,7 +59,8 @@ RDEPEND="
 
 	shared-js? ( virtual/libffi )
 
-	dbus? (
+	dbus?
+	(
 		>=sys-apps/dbus-0.60
 		>=dev-libs/dbus-glib-0.60
 	)
@@ -71,8 +72,15 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 
 	ffmpeg? ( media-video/ffmpeg )
+	necko-wifi? ( net-wireless/wireless-tools )
+"
 
-	necko-wifi? ( net-wireless/wireless-tools )"
+DEPEND="
+	>=sys-devel/autoconf-2.13:2.1
+	virtual/pkgconfig
+	dev-lang/yasm
+	${RDEPEND}
+"
 
 REQUIRED_USE="
 	jemalloc? ( !valgrind )
