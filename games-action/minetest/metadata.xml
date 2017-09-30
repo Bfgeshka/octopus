@@ -4,4 +4,17 @@
 	<maintainer type="person">
 		<email>"bfg@derpy.ru"</email>
 	</maintainer>
+	<use>
+		<flag name="leveldb">Enable LevelDB backend</flag>
+		<flag name="luajit">
+			Use <pkg>dev-lang/luajit</pkg>
+			instead of <pkg>dev-lang/lua</pkg>
+		</flag>
+		<flag name="redis">Enable redis backend via
+			<pkg>dev-libs/hiredis</pkg>
+		</flag>
+		<flag name="spatial">Enable SpatialIndex AreaStore backend
+		</flag>
+		<flag name="server">Build minetest server</flag>
+	</use>
 </pkgmetadata>
