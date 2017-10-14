@@ -37,7 +37,8 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e '1c\#!'"${EPREFIX}"'/usr/bin/python' \
 		scripts/MakeHeader.py || die
-	epatch_user
+
+	eapply_user
 	default
 	eautoreconf
 }
