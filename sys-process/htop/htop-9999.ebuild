@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools linux-info git-r3
+inherit autotools linux-info git-r3 eutils
 
 DESCRIPTION="interactive process viewer"
 HOMEPAGE="http://hisham.hm/htop/"
