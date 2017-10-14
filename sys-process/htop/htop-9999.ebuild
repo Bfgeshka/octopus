@@ -38,6 +38,10 @@ src_prepare() {
 	sed -i -e '1c\#!'"${EPREFIX}"'/usr/bin/python' \
 		scripts/MakeHeader.py || die
 
+	for i in "${FILESDIR}"/*.patch; do
+		eapply "$i"
+	done
+
 	eapply_user
 	default
 	eautoreconf

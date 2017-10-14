@@ -1,0 +1,31 @@
+commit 4040cabc0e198dbb0e98287c12ead642a8185408
+Author: Bfgeshka <bfg@derpy.ru>
+Date:   Sun Sep 10 10:53:08 2017 +0900
+
+    fix building with new glib
+
+diff --git a/Process.c b/Process.c
+index 394ca25..519b20a 100644
+--- a/Process.c
++++ b/Process.c
+@@ -16,6 +16,7 @@ in the source distribution for its full text.
+ #include <stdio.h>
+ #include <sys/time.h>
+ #include <sys/resource.h>
++#include <sys/sysmacros.h>
+ #include <sys/param.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+diff --git a/linux/LinuxProcessList.c b/linux/LinuxProcessList.c
+index 4b585e3..ebcb6a3 100644
+--- a/linux/LinuxProcessList.c
++++ b/linux/LinuxProcessList.c
+@@ -11,6 +11,7 @@ in the source distribution for its full text.
+ #include "StringUtils.h"
+ #include <errno.h>
+ #include <sys/time.h>
++#include <sys/sysmacros.h>
+ #include <sys/utsname.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
