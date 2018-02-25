@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ RDEPEND="
 	media-libs/freetype
 	media-libs/fontconfig
 
-	<dev-lang/python-2.7.14:2.7
+	dev-lang/python:2.7
 
 	system-sqlite? ( >=dev-db/sqlite-3.13.0[secure-delete] )
 	system-cairo? ( x11-libs/cairo )
