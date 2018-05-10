@@ -14,7 +14,7 @@ palemoon-2_pkg_pretend() {
 	# Ensure we are not on a gcc 5.* profile:
 	if [ "$(cc --version | head -c 3)" == "gcc" ]; then
 		einfo "Checking gcc version..."
-		if [ "$(gcc -dumpversion | head -c 1)" -eq 7 ]; then
+		if [ "$(gcc -dumpversion | head -c 1)" -ge 7 ]; then
 			gcc-7_error
 			die
 		fi
