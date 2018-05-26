@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
 	<upstream>
-		<maintainer status="active">
-			<email>ignorantguru@users.sourceforge.net</email>
-			<name>IgnorantGuru</name>
+		<maintainer type="person">
+			<email>"bfg@derpy.ru"</email>
 		</maintainer>
 		<changelog>https://ignorantguru.github.com/spacefm/news.html</changelog>
 		<doc lang="en">https://github.com/IgnorantGuru/spacefm/wiki/</doc>
