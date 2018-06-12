@@ -18,7 +18,7 @@ IUSE="xinerama"
 DEPEND="
 	x11-libs/libX11
 	xinerama? (
-		x11-proto/xineramaproto
+		x11-base/xorg-proto
 		x11-libs/libXinerama
 	)
 "

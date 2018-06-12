@@ -18,7 +18,7 @@ RDEPEND="x11-libs/libX11
 	xinerama? ( x11-libs/libXinerama )
 	xpm? ( x11-libs/libXpm )"
 DEPEND="${RDEPEND}
-	xinerama? ( x11-proto/xineramaproto )"
+	xinerama? ( x11-base/xorg-proto )"
 
 src_prepare() {
 	sed -e "s:/usr/local:/usr:g" \
