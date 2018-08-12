@@ -10,7 +10,7 @@ inherit palemoon-2 git-r3 eutils flag-o-matic pax-utils
 if [[ ${PV} == *9999* ]]; then
 	KEYWORDS=""
 else
-	KEYWORDS="~x86 ~amd64"
+	KEYWORDS="~amd64 ~x86"
 	GIT_TAG="${PV}_Release"
 	src_unpack() {
 		git-r3_fetch ${EGIT_REPO_URI} refs/tags/${GIT_TAG}

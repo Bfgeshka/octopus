@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>"bfg@derpy.ru"</email>
+	</maintainer>
+	<use>
+		<flag name='pbins'>Support for binary packages.</flag>
+		<flag name='pink'>Alternative colour scheme.</flag>
+		<flag name='search-index'>Enable support for seach index.</flag>
+
+	</use>
+</pkgmetadata>
