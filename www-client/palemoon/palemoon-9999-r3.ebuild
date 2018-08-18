@@ -22,6 +22,7 @@ IUSE="
 	+gtk2 -gtk3
 	pulseaudio
 	+devtools
+	+gconf
 	-system-sqlite -system-cairo -system-pixman -system-libevent
 	-system-vpx -system-compress -system-images -system-nss
 "
@@ -66,6 +67,8 @@ RDEPEND="
 		>=sys-apps/dbus-0.60
 		>=dev-libs/dbus-glib-0.60
 	)
+
+	gconf? ( gnome-base/gconf )
 
 	gtk2? ( >=x11-libs/gtk+-2.18.0:2 )
 	gtk3? ( >=x11-libs/gtk+-3.4.0:3 )
@@ -215,6 +218,10 @@ src_configure() {
 		mozconfig_enable devtools
 	fi
 
+	if ! use gconf; then
+		mozconfig_disable gconf
+	fi
+
 	# Enabling this causes xpcshell to hang during the packaging process,
 	# so disabling it until the cause can be tracked down. It most likely
 	# has something to do with the sandbox since the issue goes away when
@@ -266,7 +273,13 @@ src_install() {
 	mkdir -p "${extracted_dir}"
 	cd "${extracted_dir}"
 	einfo "Extracting the package..."
-	tar xjpf "${S}/${obj_dir}/dist/${P}.linux-${CTARGET_default%%-*}.tar.bz2"
+	
+#	einfo "tar xjpf ${S}/${obj_dir}/dist/${P}.linux-${CTARGET_default%%-*}.tar.bz2"
+#	die
+	
+	find "${S}/${obj_dir}/dist/" -name "*.bz2" -printf "${S}/${obj_dir}/dist/%P" | xargs tar xjpf
+
+#	tar xjpf "${S}/${obj_dir}/dist/${P}.linux-${CTARGET_default%%-*}.tar.bz2"
 	einfo "Installing the package..."
 	local dest_libdir="/usr/$(get_libdir)"
 	mkdir -p "${D}/${dest_libdir}"
