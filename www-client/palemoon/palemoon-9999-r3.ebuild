@@ -273,13 +273,7 @@ src_install() {
 	mkdir -p "${extracted_dir}"
 	cd "${extracted_dir}"
 	einfo "Extracting the package..."
-	
-#	einfo "tar xjpf ${S}/${obj_dir}/dist/${P}.linux-${CTARGET_default%%-*}.tar.bz2"
-#	die
-	
 	find "${S}/${obj_dir}/dist/" -name "*.bz2" -printf "${S}/${obj_dir}/dist/%P" | xargs tar xjpf
-
-#	tar xjpf "${S}/${obj_dir}/dist/${P}.linux-${CTARGET_default%%-*}.tar.bz2"
 	einfo "Installing the package..."
 	local dest_libdir="/usr/$(get_libdir)"
 	mkdir -p "${D}/${dest_libdir}"
