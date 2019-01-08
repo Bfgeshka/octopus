@@ -4,6 +4,7 @@
 EAPI=6
 
 EGIT_REPO_URI="https://github.com/MageSlayer/paludis-gentoo-patches.git"
+EGIT_BRANCH="eapi7"
 PYTHON_COMPAT=( python2_7 )
 RUBY_VER=2.3
 
