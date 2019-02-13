@@ -3,7 +3,9 @@
 
 EAPI=6
 
-inherit scons-utils eutils git-r3 multilib
+PYTHON_COMPAT=( python2_7 )
+
+inherit eutils git-r3 python-r1 scons-utils
 
 DESCRIPTION="Tool for cleaning up your filesystem"
 HOMEPAGE="https://github.com/sahib/rmlint"
@@ -16,6 +18,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc +nls"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	dev-libs/elfutils
 	>=dev-libs/glib-2.32
@@ -26,6 +29,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	doc? ( dev-python/sphinx )"
+
+src_prepare() {
+	
+	## Temporary fix
+	rm po/fr.po || die "removing of fr.po failed"
+	
+	eapply_user
+}
 
 src_compile() {
 	COMP_FLAGS=CC="\"$(tc-getCC)\" --prefix=${D}/usr --actual-prefix=/usr --libdir=/usr/$(get_libdir)"
