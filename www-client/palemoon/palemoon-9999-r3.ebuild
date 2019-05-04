@@ -4,7 +4,7 @@
 EAPI=6
 
 REQUIRED_BUILDSPACE='9G'
-GCC_SUPPORTED_VERSIONS="4.9 5.4 7.3 8.2"
+GCC_SUPPORTED_VERSIONS="4.9 5.4 7.3 8.2 9.1"
 
 inherit palemoon-5 git-r3 eutils flag-o-matic pax-utils
 
@@ -227,6 +227,9 @@ src_configure() {
 	# has something to do with the sandbox since the issue goes away when
 	# building with FEATURES="-sandbox -usersandbox".
 	mozconfig_disable precompiled-startupcache
+	
+	# https://github.com/MoonchildProductions/UXP/issues/1073
+	mozconfig_disable accessibility
 
 	# Mainly to prevent system's NSS/NSPR from taking precedence over
 	# the built-in ones:
