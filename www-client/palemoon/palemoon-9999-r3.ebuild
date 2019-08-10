@@ -24,7 +24,7 @@ IUSE="
 	+devtools
 	+gconf
 	-system-sqlite -system-cairo -system-pixman -system-libevent
-	-system-vpx -system-compress -system-images -system-nss
+	-system-vpx -system-compress -system-images
 "
 
 EGIT_REPO_URI="https://github.com/MoonchildProductions/UXP.git"
@@ -89,7 +89,6 @@ RDEPEND="
 		media-libs/libpng:*[apng]
 	)
 	system-libevent? ( dev-libs/libevent )
-	system-nss? ( >=dev-libs/nss-3.28.3 )
 	system-pixman? ( x11-libs/pixman )
 	system-sqlite? ( >=dev-db/sqlite-3.13.0[secure-delete] )
 	system-vpx? ( >=media-libs/libvpx-1.5.0 )
@@ -134,10 +133,6 @@ src_configure() {
 
 	if use system-libevent; then
 		mozconfig_with system-libevent
-	fi
-
-	if use system-nss; then
-		mozconfig_with system-nss
 	fi
 
 	if use system-images; then
