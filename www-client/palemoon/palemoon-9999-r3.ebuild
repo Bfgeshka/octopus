@@ -4,7 +4,7 @@
 EAPI=6
 
 REQUIRED_BUILDSPACE='9G'
-GCC_SUPPORTED_VERSIONS="4.9 5.4 7.3 8.2 9.1"
+GCC_SUPPORTED_VERSIONS="4.9 5.4 7.3 8.2"
 
 inherit palemoon-5 git-r3 eutils flag-o-matic pax-utils
 
