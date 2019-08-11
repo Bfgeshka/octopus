@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,7 @@ RDEPEND=">=dev-libs/glib-2.28:2
 	)
 	gtk3? (
 		>=x11-libs/gtk+-3.0:3
-		vte? ( x11-libs/vte:2.90 )
+		vte? ( x11-libs/vte:2.91 )
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
