@@ -31,10 +31,9 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )"
 
 src_prepare() {
-	
 	## Temporary fix
 	rm po/fr.po || die "removing of fr.po failed"
-	
+
 	eapply_user
 }
 
