@@ -19,8 +19,8 @@ IUSE="doc devtools +qt5"
 # used when BUILD_OPENCS flag is enabled. See bug #676266.
 
 RDEPEND="
+	=dev-games/openscenegraph-3.4.1:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib]
 	dev-games/mygui
-	>=dev-games/openscenegraph-3.5.5:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib]
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml[stl]
 	media-libs/libsdl2[joystick,opengl,video]
