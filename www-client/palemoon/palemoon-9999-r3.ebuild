@@ -222,7 +222,7 @@ src_configure() {
 	# has something to do with the sandbox since the issue goes away when
 	# building with FEATURES="-sandbox -usersandbox".
 	mozconfig_disable precompiled-startupcache
-	
+
 	# https://github.com/MoonchildProductions/UXP/issues/1073
 	mozconfig_disable accessibility
 
