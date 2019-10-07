@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${MY_PN}/archive/${MY_P}.tar.gz"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/158" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="asio curl debug doc egl examples ffmpeg fltk fox gdal gif glut gstreamer gtk jpeg
 jpeg2k las libav lua openexr openinventor osgapps pdf png sdl sdl2 svg tiff
 truetype vnc wxwidgets xrandr zlib"
@@ -49,7 +49,7 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper:= )
+	jpeg2k? ( media-libs/jasper )
 	las? ( >=sci-geosciences/liblas-1.8.0 )
 	lua? ( >=dev-lang/lua-5.1.5:* )
 	openexr? (

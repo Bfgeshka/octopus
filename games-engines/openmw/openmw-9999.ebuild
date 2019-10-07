@@ -12,14 +12,15 @@ EGIT_REPO_URI="https://github.com/OpenMW/openmw.git"
 
 LICENSE="GPL-3 MIT BitstreamVera ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="doc devtools +qt5"
 
 # FIXME: Unbundle dev-games/openscenegraph-qt in extern/osgQt directory,
 # used when BUILD_OPENCS flag is enabled. See bug #676266.
 
 RDEPEND="
-	=dev-games/openscenegraph-3.4.1:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib]
+	~dev-games/openscenegraph-3.4.1
+	dev-games/openscenegraph:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib]
 	dev-games/mygui
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml[stl]
