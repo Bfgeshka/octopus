@@ -50,6 +50,8 @@ src_prepare() {
 		-e "s|\$<TARGET_FILE:spirv-dis>|${EPREFIX}/usr/bin/spirv-dis|" \
 		glslc/test/CMakeLists.txt || die
 
+	sed -i '1iinclude_directories(/usr/include/glslang)' CMakeLists.txt || die
+	
 	# Disable git versioning
 	sed -i -e '/build-version/d' glslc/CMakeLists.txt || die
 
