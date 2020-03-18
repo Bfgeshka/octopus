@@ -182,7 +182,7 @@ src_configure() {
 
 		--disable-android
 		$(use_enable iconv)
-		$(use_enable samba libsmbclient)
+#		$(use_enable samba libsmbclient)
 		$(use_enable lua)
 		$(usex luajit '--lua=luajit' '')
 		$(use_enable javascript)
