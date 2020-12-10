@@ -38,7 +38,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-9999-include-sysmacros.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-include-sysmacros.patch
+	"${FILESDIR}"/${PN}-fno-common.patch
+)
 
 src_configure() {
 	econf \
