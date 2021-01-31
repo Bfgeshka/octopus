@@ -1,24 +1,19 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 inherit bash-completion-r1 multilib
 
 DESCRIPTION="A ncurses based music player with plugin support for many formats"
 HOMEPAGE="https://cmus.github.io/"
 
-if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="https://github.com/cmus/${PN}.git"
-	EGIT_BRANCH="master"
-	inherit git-r3
-else
-	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/cmus/cmus/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
-fi
+EGIT_REPO_URI="https://github.com/cmus/${PN}.git"
+EGIT_BRANCH="master"
+inherit git-r3
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="aac alsa ao cue cdio cddb discid debug examples ffmpeg +flac jack libsamplerate
 	+mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio tremor +unicode
 	+vorbis wavpack"
