@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit cmake-utils eutils gnome2-utils user vcs-snapshot git-r3
+inherit cmake eutils gnome2-utils user vcs-snapshot git-r3
 
 DESCRIPTION="An InfiniMiner/Minecraft inspired game"
 HOMEPAGE="http://minetest.net/"
